@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- === Header Starts === -->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>XSTNet-InterSpeech2021</title>
+
+  <link href="./assets/bootstrap.min.css" rel="stylesheet">
+  <link href="./assets/font.css" rel="stylesheet" type="text/css">
+  <link href="./assets/style.css" rel="stylesheet" type="text/css">
+<!--  <link rel="stylesheet" type="text/css" href="./assets/bootstrap.min.css">-->
+
+  <link rel="stylesheet" type="text/css" href="./assets/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="./assets/animate.css">
+
+  <link rel="stylesheet" type="text/css" href="./assets/select2.min.css">
+
+  <link rel="stylesheet" type="text/css" href="./assets/perfect-scrollbar.css">
+
+  <link rel="stylesheet" type="text/css" href="./assets/util.css">
+  <link rel="stylesheet" type="text/css" href="./assets/main.css">
+</head>
+<!-- === Header Ends === -->
+
+
+<body>
+
+
+<!-- === Home Section Starts === -->
+<div class="section">
+  <!-- === Title Starts === -->
+  <div class="header">
+    <div class="title", style="padding-top: 10pt;">  <!-- Set padding as 10 if title is with two lines. -->
+      End-to-end Speech Translation via Cross-modal Progressive Training
+    </div>
+  </div>
+  <!-- === Title Ends === -->
+  <div class="author">
+    <a href="https://github.com/ReneeYe">Rong Ye</a><sup>1</sup>,&nbsp;
+    <a href="https://scholar.google.com/citations?user=hOQ6G6EAAAAJ&hl=en">Mingxuan Wang</a><sup>1</sup>,&nbsp;
+    <a href="https://lileicc.github.io">Lei Li</a><sup>1</sup>
+  </div>
+  <div class="institution">
+      <sup>1</sup>ByteDance AI Lab
+  </div>
+  <div class="link">
+    <a href="https://arxiv.org/abs/2104.10380">[Paper]</a>&nbsp;
+    <a href="https://github.com/ReneeYe/XSTNet">[Code]</a>
+  </div>
+</div>
+<!-- === Home Section Ends === -->
+
+
+<!-- === Overview Section Starts === -->
+<div class="section">
+  <div class="title">Overview</div>
+  <div class="body">
+    <b>Cross S</b>peech-<b>T</b>ext <b>Net</b>work (<b>XSTNet</b>), an end-to-end model for speech-to-text translation. 
+    <b>XSTNet</b> takes both speech and text as input and outputs both transcription and translation text. 
+    The model benefits from its three key design aspects: 
+    <b>1)</b> a self-supervised pre-trained sub-network as the audio encoder,
+    <b>2)</b> a multi-task training objective to exploit additional parallel bilingual text, and 
+    <b>3)</b> a progressive training procedure.
+  </div>
+  <div class="teaser">
+    <img src="files/XSTNet.png" width="60%" >
+  </div>
+</div>
+<!-- === Overview Section Ends === -->
+
+
+<!-- === Result Section Starts === -->
+<div class="section">
+  <div class="title">Results</div>
+  <div class="body">
+    We evaluate the performance of XSTNet and baselines on the MuST-C En-X and LibriSpeech En-Fr datasets. In particular, XSTNet achieves state-of-the-art results on all eight language directions with an average BLEU of 28.8, outperforming the previous best method by 3.2 BLEU. The table below shows the results on MuST-C En-X dataset.
+    <!-- Adjust the number of rows and columns (EVERY project differs). -->
+    <table width="100%" style="margin: 20pt 0; text-align: center;">
+      <tr>
+        <td><img src="files/MuSTC_result.png" width="100%"></td>
+      </tr>
+    </table>
+
+   <!--  <br/>
+    <br/>
+    <div class="table100 ver1 m-b-110">
+      <div class="table100-head">
+        <table>
+          <thead>
+          <tr class="row100 head">
+            <th class="cell100 column1">Models</th>
+            <th class="cell100 column2">External Data</th>
+            <th class="cell100 column3">Pre-train Tasks</th>
+            <th class="cell100 column4">De</th>
+            <th class="cell100 column5">Es</th>
+            <th class="cell100 column6">Fr</th>
+            <th class="cell100 column7">It</th>
+            <th class="cell100 column8">Nl</th>
+            <th class="cell100 column9">Pt</th>
+            <th class="cell100 column10">Ro</th>
+            <th class="cell100 column11">Ru</th>
+            <th class="cell100 column12">Avg.</th>
+          </tr>
+          </thead>
+        </table>
+      </div>
+      <div class="table100-body js-pscroll">
+        <table>
+          <tbody>
+          <tr class="row100 body">
+            <td class="cell100 column1">MT system</td>
+            <td class="cell100 column2"></td>
+            <td class="cell100 column3"></td>
+            <td class="cell100 column4"></td>
+            <td class="cell100 column5"></td>
+          </tr>
+          <tr class="row100 body">
+            <td class="cell100 column1">Transformer MT (Liu et al. 2019)</td>
+            <td class="cell100 column2">-</td>
+            <td class="cell100 column3">-</td>
+            <td class="cell100 column4">21.35</td>
+            <td class="cell100 column5">22.91</td>
+          </tr>
+          <tr class="row100 body">
+            <td class="cell100 column1">Base ST setting</td>
+            <td class="cell100 column2"></td>
+            <td class="cell100 column3"></td>
+            <td class="cell100 column4"></td>
+            <td class="cell100 column5"></td>
+          </tr>
+          <tr class="row100 body">
+            <td class="cell100 column1">LSTM ST (B ́erard et al. 2018)</td>
+            <td class="cell100 column2">✗</td>
+            <td class="cell100 column3">✗</td>
+            <td class="cell100 column4">12.30</td>
+            <td class="cell100 column5">12.90</td>
+          </tr>
+          <tr class="row100 body">
+            <td class="cell100 column1">+pre-train+multitask (B ́erard et al. 2018)</td>
+            <td class="cell100 column2">✓</td>
+            <td class="cell100 column3">✓</td>
+            <td class="cell100 column4">12.60</td>
+            <td class="cell100 column5">13.40</td>
+          </tr>
+          <tr class="row100 body">
+            <td class="cell100 column1">LSTM ST+pre-train (Inaguma et al. 2020)</td>
+            <td class="cell100 column2">✓</td>
+            <td class="cell100 column3">✓</td>
+            <td class="cell100 column4">-</td>
+            <td class="cell100 column5">16.68</td>
+          </tr>
+          <tr class="row100 body">
+            <td class="cell100 column1">Transformer+pre-train (Liu et al. 2019)</td>
+            <td class="cell100 column2">✓</td>
+            <td class="cell100 column3">✓</td>
+            <td class="cell100 column4">13.89</td>
+            <td class="cell100 column5">14.30</td>
+          </tr>
+          <tr class="row100 body">
+            <td class="cell100 column1">+knowledge distillation (Liu et al. 2019)</td>
+            <td class="cell100 column2">✓</td>
+            <td class="cell100 column3">✓</td>
+            <td class="cell100 column4">14.96</td>
+            <td class="cell100 column5">17.02</td>
+          </tr>
+          <tr class="row100 body">
+            <td class="cell100 column1">TCEN-LSTM (Wang et al. 2020a)</td>
+            <td class="cell100 column2">✓</td>
+            <td class="cell100 column3">✓</td>
+            <td class="cell100 column4">-</td>
+            <td class="cell100 column5">17.05</td>
+          </tr>
+          <tr class="row100 body">
+            <td class="cell100 column1">Transformer+ASR pre-train (Wang et al. 2020b)</td>
+            <td class="cell100 column2">✓</td>
+            <td class="cell100 column3">✗</td>
+            <td class="cell100 column4">-</td>
+            <td class="cell100 column5">15.97</td>
+          </tr>
+          <tr class="row100 body">
+            <td class="cell100 column1">Transformer+curriculum pre-train (Wang et al. 2020b)</td>
+            <td class="cell100 column2">✓</td>
+            <td class="cell100 column3">✗</td>
+            <td class="cell100 column4">-</td>
+            <td class="cell100 column5">17.66</td>
+          </tr>
+          <tr class="row100 body">
+            <td class="cell100 column1"><b>LUT without pre-training</b></td>
+            <td class="cell100 column2">✗</td>
+            <td class="cell100 column3">✗</td>
+            <td class="cell100 column4"><b>16.70</b></td>
+            <td class="cell100 column5"><b>17.75</b></td>
+          </tr>
+          <tr class="row100 body">
+            <td class="cell100 column1">Expanded ST setting</td>
+            <td class="cell100 column2"></td>
+            <td class="cell100 column3"></td>
+            <td class="cell100 column4"></td>
+            <td class="cell100 column5"></td>
+          </tr>
+          <tr class="row100 body">
+            <td class="cell100 column1">LSTM+pre-train+SpecAugment (Bahar et al. 2019)</td>
+            <td class="cell100 column2">✓</td>
+            <td class="cell100 column3">✓</td>
+            <td class="cell100 column4">-</td>
+            <td class="cell100 column5">17.00</td>
+          </tr>
+          <tr class="row100 body">
+            <td class="cell100 column1">Multilingual ST+PT (Inaguma et al. 2019)</td>
+            <td class="cell100 column2">✓</td>
+            <td class="cell100 column3">✗</td>
+            <td class="cell100 column4">-</td>
+            <td class="cell100 column5">17.60</td>
+          </tr>
+          <tr class="row100 body">
+            <td class="cell100 column1">Transformer+ASR pre-train (Wang et al. 2020b)</td>
+            <td class="cell100 column2">✓</td>
+            <td class="cell100 column3">✗</td>
+            <td class="cell100 column4">-</td>
+            <td class="cell100 column5">16.90</td>
+          </tr>
+          <tr class="row100 body">
+            <td class="cell100 column1">Transformer+curriculum pre-train (Wang et al. 2020b)</td>
+            <td class="cell100 column2">✓</td>
+            <td class="cell100 column3">✗</td>
+            <td class="cell100 column4">-</td>
+            <td class="cell100 column5">18.01</td>
+          </tr>
+          <tr class="row100 body">
+            <td class="cell100 column1"><b>LUT with pre-training</b></td>
+            <td class="cell100 column2">✓</td>
+            <td class="cell100 column3">✗</td>
+            <td class="cell100 column4"><b>17.55</b></td>
+            <td class="cell100 column5"><b>18.34</b></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div> -->
+    <!-- Adjust the number of rows and columns (EVERY project differs). -->
+<!--    <table width="100%" style="margin: 20pt 0; text-align: center;">-->
+<!--      <tr>-->
+<!--        <td><img src="files/lut_case.png" width="50%"></td>-->
+<!--      </tr>-->
+<!--    </table>-->
+  </div>
+</div>
+
+<div class="section">
+  <div class="title">Cases</div>
+  In this section, we will show some cases and analyze in which circumstance end-to-end model (XSTNet) is better than the cascaded model and the opposite.
+  The <b><font color="red">red bold part</font></b> is incorrect.
+  <br/>
+  <br/>
+  <th style="text-align: center"> <big><u><strong>CASE I</strong>: XSTNet can overcome the error propagation.</big></u></th>
+  <table width="100%" style="margin: 20pt 0; text-align: center;">
+    <tr>
+      <td style="text-align: left"><audio controls="controls" ><source src="files/XSTNet_case1.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+    </tr>
+  </table>
+  <p>
+    <b>Reference Transcript:</b> <br>
+    <p style="text-indent:2em">You can go on the website, download all the design files, make them yourself. </p> <br>
+    <b>Transcript (Cascade generates):</b> <br>
+    <p style="text-indent:2em">You can go on the website, download <b><font color="red">other</font></b> design files, make them yourself. <font color="blue">[Wrong]</font></p> <br>
+    <b>Translation (XSTNet generates):</b> <br>
+    <p style="text-indent:2em">Sie können auf der Website die Designdateien herunterladen, sie selbst herstellen. <font color="blue">[Correct]</font></p> <br>
+    <b>Translation (Cascade generates):</b> <br>
+    <p style="text-indent:2em">Sie können auf die Website gehen, <b><font color="red">andere Designdateien herunterladen</font></b>, sich selbst machen. <font color="blue">[Wrong]</font></p> <br>
+  </p>  
+
+  
+  <br/>
+  <th style="text-align: center"> <big><u><strong>CASE II</strong>: XSTNet can reduce the error caused by ambiguous punctation</big></u></th>
+  <table width="100%" style="margin: 20pt 0; text-align: center;">
+    <tr>
+      <td style="text-align: left"><audio controls="controls" ><source src="files/XSTNet_case2.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+    </tr>
+  </table>
+  <p>
+    <b>Reference Transcript:</b> <br>
+    <p style="text-indent:2em">Lights, sounds, solar panels, motors -- everything should be accessible.</p> <br>
+    <b>Transcript (Cascade generates):</b> <br>
+    <p style="text-indent:2em">Lights sounds solar panels motors everything should be accessible <font color="blue">[Correct]</font></p> <br>
+    <b>Translation (XSTNet generates):</b> <br>
+    <p style="text-indent:2em">Licht, Geräusche, Solarkollektoren, Motoren — alles sollte zugänglich sein. <font color="blue">[Correct]</font></p> <br>
+    <b>Translation (Cascade generates):</b> <br>
+    <p style="text-indent:2em">Licht <b><font color="red">klingt</font></b> Solarpaneele, Motoren; alles sollte zugänglich sein. <font color="blue">[Wrong]</font></p> <br>
+  </p>  
+  
+  <br/>
+  <br/>
+  <th style="text-align: center"> <big><u><strong>CASE III</strong>: XSTNet still has room for improvements.</big></u></th>
+  <table width="100%" style="margin: 20pt 0; text-align: center;">
+    <tr>
+      <td style="text-align: left"><audio controls="controls" ><source src="files/XSTNet_case3.wav" autoplay/>Your browser does not support the audio element.</audio></td>
+    </tr>
+  </table>
+  <p>
+    <b>Reference Transcript:</b> <br>
+    <p style="text-indent:2em">Eight years ago when I was at the Media Lab, I started exploring this idea of how to put the power of engineers in the hands of artists and designers.</p> <br>
+    <b>Translation (XSTNet generates):</b> <br>
+    <p style="text-indent:2em">Vor acht Jahren, als ich im Media Lab war, begann ich <b><font color="red">zu erforschen</font></b>, wie man die Kraft der Ingenieure in die Hände von Künstlern und Designern legt. <font color="blue">[Not precise]</font></p> <br>
+    <b>Translation (Cascade generates):</b> <br>
+    <p style="text-indent:2em">Vor 8 Jahren, als ich im Media Lab war, begann ich, diese Idee zu erforschen, wie man die Macht der Ingenieure in die Hände von Künstlern und Designern legte. <font color="blue">[Correct]</font></p> <br>
+  </p>  
+
+
+</div>
+</div>
+
+<!-- <div class="section">
+  <div class="title">Videos</div>
+    <div style="position: relative; padding-top: 50%; margin: 20pt 0; text-align: center;">
+      <iframe src="https://slideslive.com/38949368/listen-understand-and-translate-triple-supervision-decouples-endtoend-speechtotext-translation?ref=account-79851-latest" frameborder=0
+              style="position: absolute; top: 2.5%; left: 2.5%; width: 95%; height: 100%;"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+    </div> -->
+<!--  </div>-->
+<!-- </div> -->
+<!-- === Result Section Ends === -->
+
+<!-- === Reference Section Starts === -->
+<div class="section">
+  <div class="bibtex">BibTeX</div>
+<pre>
+@InProceedings{ye2021end,
+  author    = {Rong Ye and Mingxuan Wang and Lei Li},
+  booktitle = {Proc. of INTERSPEECH},
+  title     = {End-to-end Speech Translation via Cross-modal Progressive Training},
+  year      = {2021},
+  month     = aug,
+}
+
+</pre>
+</div>
+</body>
+</html>
