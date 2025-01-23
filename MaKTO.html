@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+
+
+<!-- === Header Starts === -->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>MaKTO-Werewolf</title>
+
+  <link href="./assets/projects/XSTNet/assets/bootstrap.min.css" rel="stylesheet">
+  <link href="./assets/projects/XSTNet/assets/font.css" rel="stylesheet" type="text/css">
+  <link href="./assets/projects/XSTNet/assets/style.css" rel="stylesheet" type="text/css">
+<!--  <link rel="stylesheet" type="text/css" href="./assets/bootstrap.min.css">-->
+
+  <link rel="stylesheet" type="text/css" href="./assets/projects/XSTNet/assets/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="./assets/projects/XSTNet/assets/animate.css">
+
+  <link rel="stylesheet" type="text/css" href="./assets/projects/XSTNet/assets/select2.min.css">
+
+  <link rel="stylesheet" type="text/css" href="./assets/projects/XSTNet/assets/perfect-scrollbar.css">
+
+  <link rel="stylesheet" type="text/css" href="./assets/projects/XSTNet/assets/util.css">
+  <link rel="stylesheet" type="text/css" href="./assets/projects/XSTNet/assets/main.css">
+
+</head>
+<!-- === Header Ends === -->
+
+
+
+<body>
+
+
+<!-- === Home Section Starts === -->
+<div class="section">
+  <!-- === Title Starts === -->
+  <div class="header">
+    <div class="title", style="padding-top: 0pt;">  <!-- Set padding as 10 if title is with two lines. -->
+      <b>Multi-agent KTO</b>: Reinforcing Strategic Interactions of Large Language Model in Language Game
+    </div>
+  </div>
+  <!-- === Title Ends === -->
+  <div class="author">
+    <a href="https://scholar.google.com/citations?hl=zh-CN&user=UV4u5UQAAAAJ">Rong Ye</a><sup>1,2</sup>,&nbsp;
+    <a href="">Yongxin Zhang</a><sup>2</sup>,&nbsp;
+    <a href="https://scholar.google.com/citations?user=HtS6oQgAAAAJ">Yikai Zhang</a><sup>1</sup>,&nbsp;
+    <a href="">Haoyu Kuang</a><sup>1</sup>,&nbsp;
+    <a href="https://scholar.google.com/citations?user=AjLDxxgAAAAJ">Zhongyu Wei</a><sup>2</sup>,&nbsp;
+    <a href="https://pengsun.github.io/">Peng Sun</a><sup>2</sup>
+  </div>
+  <div class="institution">
+  		<sup>1</sup>Fudan University
+      <sup>2</sup>ByteDance Research
+  </div>
+  <div class="link">
+    <a href="">[Paper]</a>&nbsp;
+    <a href="">[Code]</a>&nbsp;
+    <a href="">[Dataset]</a> (all coming soon)
+  </div>
+</div>
+<!-- === Home Section Ends === -->
+
+
+<!-- === Abstract Section Starts === -->
+<div class="section">
+  <div class="title">Abstract</div>
+  <div class="body">
+    <!-- b>Cross S</b>peech-<b>T</b>ext <b>Net</b>work (<b>XSTNet</b>), an end-to-end model for speech-to-text translation. 
+    <b>XSTNet</b> takes both speech and text as input and outputs both transcription and translation text. 
+    The model benefits from its three key design aspects: 
+    <b>1)</b> a self-supervised pre-trained sub-network as the audio encoder,
+    <b>2)</b> a multi-task training objective to exploit additional parallel bilingual text, and 
+    <b>3)</b> a progressive training procedure. -->
+
+    Achieving Artificial General Intelligence (AGI) requires AI agents that can not only make stratigic decisions but also engage in flexible and meaningful communication. Inspired by Wittgenstein's language game theory in <i>Philosophical Investigations</i>, we propose that language agents can learn through in-context interaction rather than traditional multi-stage frameworks that separate decision-making from language expression. Using <i><a href="https://en.wikipedia.org/wiki/Mafia_(party_game)">Werewolf</a></i>, a social deduction game that tests language understanding, strategic interaction, and adaptability, we develop <b>Multi-agent Kahneman & Tversky's Optimization (MaKTO)</b>. <b>MaKTO</b> engages diverse models in extensive gameplay to generate unpaired desirable and unacceptable responses, then employs KTO to refine the model's decision-making process. In 9-player Werewolf games, MaKTO achieves a <b>61%</b> average win rate across various models, outperforming GPT-4o and two-stage RL agents by relative improvements of <b>23.0%</b> and <b>10.9%</b>, respectively.
+    Notably, MaKTO also demonstrates human-like performance, winning <b>60%</b> against expert players and showing only <b>49% detectability</b> in Turing-style blind tests. These results showcase MaKTO's superior decision-making, strategic adaptation, and natural language generation in complex social deduction games.
+
+  </div>
+  <div class="teaser">
+    <!-- <img src="./assets/projects/MaKTO/assets/Wittgenstein_18.gif" width="30%" > -->
+    <img src="./assets/projects/MaKTO/assets/motivation.png" width="110%" >
+    <figcaption><b>Comparative Analysis of Language-Decision Frameworks: A Dual Perspective from Language Theory and AI Architecture.</b> Figure (a) and (b) illustrate the Language and Picture Theory and the two-stage framework, where linguistic expression is separated from decision-making intent. In contrast, Figure (c) and (d) present our proposed framework inspired by Wittgenstein's language game theory (<i>Philosophical Investigations, 1953</i>), which integrates language, actions, and intentions within a multi-agent language game environment.</figcaption>
+  </div>
+</div>
+<!-- === Abstract Section Ends === -->
+
+<!-- === Motivation Section Starts === -->
+<!-- === Motivation Section Ends === -->
+
+
+
+<!-- === Method Section Starts === -->
+<div class="section">
+  <div class="title">Method Overview</div>
+  <div class="body">
+    <!-- b>Cross S</b>peech-<b>T</b>ext <b>Net</b>work (<b>XSTNet</b>), an end-to-end model for speech-to-text translation. 
+    <b>XSTNet</b> takes both speech and text as input and outputs both transcription and translation text. 
+    The model benefits from its three key design aspects: 
+    <b>1)</b> a self-supervised pre-trained sub-network as the audio encoder,
+    <b>2)</b> a multi-task training objective to exploit additional parallel bilingual text, and 
+    <b>3)</b> a progressive training procedure. -->
+
+    <div class="body">Our method contains two steps:</div>
+    <div class="body"><b>Step 1: Behavior cloning</b> from fundamental game comprehension data, advanced gaming techniques, and the annotated expert data of authentic gaming behavior with reasoning process for each game stage; the dataset of authentic gaming behavior can be downloaded <a href="">here</a>. </div>
+    <div class="body"><b>Step 2: Multi-agent KTO</b> In the multi-agent gameplay, we randomly assign the role to different models or agents in the game, and let the training model interact with various models to enhance robustness. Finally, we apply a stepwise selection method to identify and extract desirable and unacceptable responses from extensive random multi-agent gameplay data, and use KTO to further optimize the model.</div>
+
+
+  </div>
+  <div class="teaser">
+    <img src="./assets/projects/MaKTO/assets/method.png" width="60%" >
+  </div>
+</div>
+<!-- === Method Section Ends === -->
+
+
+<!-- === Result Section Starts === -->
+<div class="section">
+  <div class="title">Results</div>
+  <div class="body">
+	We evaluate the performance of the MaKTO-72b in <b>tournament evaluations</b>, which included both inter-agent and human-agent competition, as well as head-to-head and random competition dimensions. MaKTO-72b all achieves good results.
+    <!-- Adjust the number of rows and columns (EVERY project differs). -->
+    <table width="100%" style="margin: 20pt 0; text-align: center;" border="1">
+      <tr>
+      	<td></td>
+      	<td><b>Inter-agent Competition</b></td>
+      	<td><b>Human-agent Competition</b></td>
+      </tr>
+      <tr>
+      	<td><b>Head-to-head</b></td>
+      	<!-- <td>Head-to-head Competition</td> -->
+        <td>
+        	<img src="./assets/projects/MaKTO/assets/ai-head.png" width="90%">
+        	<figcaption style="font-size: 14px;">MaKTO-72b has the highest average win rates of the models in the Seer-Witch-Guard setting (61%). </figcaption>
+        </td>
+        <td>
+        	<img src="./assets/projects/MaKTO/assets/human-head.png" width="80%">
+        	<figcaption style="font-size: 14px;">The average win rate of MaKTO-72b in head-to-head competition with humans is 60%.</figcaption>
+        </td>
+      </tr>
+
+      <tr>
+      	<td><b>Random</b></td>
+      	<td>
+      		<img src="./assets/projects/MaKTO/assets/random.png" width="95%">
+      		<figcaption style="font-size: 14px;">MaKTO-72b has the highest TrueSkill score in Seer-Witch-Guard setting.</figcaption>
+        </td>
+      	</td>
+      	<td>
+      		<img src="./assets/projects/MaKTO/assets/human-rand.png" width="90%">
+      		<figcaption style="font-size: 14px;">MaKTO-72b achieves a win rate 61.8% win rate, ranking fourth among all players and surpassing the average human win rate of 54.0%.</figcaption>
+      	</td>
+      </tr>
+    </table>
+
+    <table>
+    	<tr>
+    	<td width="80%">We conducted a <b>Turing-style blind detectability test</b>. MaKTO achieved a detection rate of only 48.9%, lower than random chance, also much lower than GPT-4o (76.6%). This indicates that our model successfully passes this specialized Turing test by convincingly emulating human-like gameplay characteristics and social behaviors.</td>
+    	<td width="20%">
+    		<img src="./assets/projects/MaKTO/assets/turing.png" width="80%" >
+  		</td>
+  	</tr>
+  	</table>
+  	We also did behavior analysis, generalization experiment and ablation studies. Please refer to our paper.
+  </div>
+</div>
+
+<div class="section">
+  <div class="title">Case Study</div>
+  The following is a case of a human-AI head-to-head competition with MaKTO as villagers and human players as werewolves.
+  <div style="height: 800px; 
+            overflow-y: auto; 
+            border: 1px solid #e0e0e0; 
+            border-radius: 8px; 
+            padding: 20px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+			font-size: 16px;
+            line-height: 1.5;">
+
+    <h3>Role Assignments:</h3>
+    <ul>
+        <li>- Player 1 (MaKTO-72B):&nbsp;Guard 💂(守卫)</li>
+        <li>- Player 2 (Human):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Werewolf 🐺 (狼人)</li>
+        <li>- Player 3 (Human):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Werewolf 🐺 (狼人)</li>
+        <li>- Player 4 (MaKTO-72B): Seer 👁️ (预言家)</li>
+        <li>- Player 5 (MaKTO-72B): Simple villager 👤 (普通村民)</li>
+        <li>- Player 6 (MaKTO-72B): Simple villager 👤 (普通村民)</li>
+        <li>- Player 7 (Human):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Werewolf 🐺 (狼人)</li>
+        <li>- Player 8 (MaKTO-72B): Witch 🧙🏻 (女巫)</li>
+        <li>- Player 9 (MaKTO-72B): Simple villager 👤 (普通村民)</li>
+    </ul>
+    <br>
+
+    <h3>Night 1:</h3>
+    <ul>
+        <li><strong>Werewolves 🐺:</strong>
+            Player 2, Player 3 and Player 7 chose to kill Player 7.</li>
+        <li><strong>Seer 👁️:</strong>
+            Player 4 checked Player 8 -- Not a Werewolf.</li>
+        <li><strong>Witch 🧙🏻:</strong>
+            Player 8 used antidotes to save Player 7; did not use poison.</li>
+        <li><strong>Guard 💂:</strong>
+            Player 1 chose to protect None.</li>
+    </ul>
+    <br>
+    <h3>Day 1 announcement:</h3>
+    <p>No one died last night.<br>
+    Start discussion from Player 4.</p>
+    <br>
+    <h3>Day 1 discussion:</h3>
+    <div style="margin-left: 20px; margin-bottom: 15px;">
+        <p><strong>* Player 4 (MaKTO-72B, Seer 👁️):</strong><br>
+        我是预言家，昨晚查验9号是好人，前置位第一个发言没什么多余的信息了，本轮归票后置位悍跳狼。<br>
+        <em>I am the Seer. Last night, I verified that Player 9 is a good person. As the first speaker in the front positions, I don't have much additional information to share. This round, I'm voting for the Werewolf who is boldly claiming to be the Seer in the back positions.</em></p>
+
+        <br>
+        <p><strong>* Player 5 (MaKTO-72B, Simple villager 👤):</strong><br>
+        吾乃一介村民，不才，昨晚睡得有点死，居然不知道昨晚是哪个盖世守卫和女巫大人联手维护了村庄和平，当然也不排除是狼人自刀的可能性。不过这些都不重要了，重要的是今天4号起跳预言家给9号发金水，发言简短，没有视角，可能是真预言家也可能是夜间没有安排工作的狼人。我需要根据9号的发言来选择站边，如果9号的发言取得我的好感，我可能会站边4号，否则，我将会考虑4号是悍跳狼人。<br>
+        <em>I am but a humble villager. I must admit, I slept rather soundly last night and was unaware of which legendary guard and esteemed witch joined forces to maintain peace in our village. Of course, we can't rule out the possibility that the werewolves chose not to attack anyone. However, these matters are no longer of great importance. What's crucial is that today, Player 4 has claimed to be the Seer and declared Player 9 as "golden" (confirmed innocent). Their statement was brief and lacked perspective, suggesting they could either be the true Seer or a werewolf who had no assigned task during the night. I need to base my decision on Player9's upcoming statement. If Player 9's words resonate well with me, I might side with Player 4. Otherwise, I will consider the possibility that Player 4 is a werewolf boldly impersonating the Seer.</em></p>
+
+        <p><strong>* Player 7 (MaKTO-72B, Simple villager 👤):</strong><br>
+		我是一个村民，4号跳预言家发言有些简短，我暂时先不选择站边。我认为4号可能是预言家或狼人，5号可能是村民或狼人。先听一下后置位对跳预言家的玩家发言以及9号的发言吧，我会根据发言选择站边。<br>
+		<em>I am a Villager. Player 4's claim to be the Seer was rather brief, so I'm not choosing sides yet. I think Player 4 could be either the Seer or a werewolf, and Player 5 could be either a villager or a werewolf. Let's first listen to the statements from players in the back positions who might also claim to be the Seer, as well as Player 9's statement. I will choose sides based on these upcoming statements.</em></p>
+        
+        <p><strong>* Player 7 (Human, Werewolf 🐺):</strong><br>
+		我是预言家，昨夜查验8号玩家是金水，查验的心路历程就是从身边查验，我如果是悍跳的狼人，给后置位发查杀显然力度更大。因为本局游戏有守卫在场，如果昨夜是女巫使用了解药，女巫和守卫可以先不要跳出来表明身份，守卫今夜来守护我，女巫可以选择心中的狼人进行毒杀。如果女巫昨夜没有使用解药，女巫和守卫可以站出来排一下坑，这样的话守卫晚上守护女巫，女巫解救被刀杀的玩家，或者毒杀像狼人的玩家。<br>
+		<em>I am the Seer. Last night, I verified that Player 8 is "golden" (confirmed innocent). My verification process was to check those near me. If I were a werewolf impersonating the Seer, it would have been more impactful to accuse a player in the back positions of being a werewolf. Since there's a Guard in this game, if the Witch used her healing potion last night, both the Witch and the Guard should refrain from revealing their identities for now. The Guard should protect me tonight, and the Witch can choose to poison a player she suspects to be a werewolf. If the Witch didn't use her healing potion last night, both the Witch and the Guard can come forward to clarify their positions. In this case, the Guard can protect the Witch at night, while the Witch can either save a player who's been attacked by werewolves or poison a player who seems suspicious.</em></p>
+
+		<p><strong>* Player 8 (MaKTO-72B, Witch 🧙🏻):</strong><br>
+		我是女巫，已使用解药解救7号，目前没有使用毒药。我认为前置位4号发言过于简短，没有考虑到女巫和守卫在场，没有安排守卫和女巫的工作，所以4号像一只悍跳狼人。而7号发言中规中矩，考虑到了场上有守卫和女巫，对女巫和守卫的工作也进行了安排，所以我认为7号像预言家。如果后置位有发言更好的预言家，我可能会考虑更换站边。<br>
+		<em>I am the Witch. I have already used my healing potion to save Player 7, but I haven't used my poison yet. I think Player 4's statement in the front positions was too brief and didn't consider the presence of the Witch and the Guard. Player 4 also didn't provide any instructions for the Witch and Guard's actions, so they seem like a werewolf boldly impersonating the Seer. On the other hand, Player 7's statement was appropriate and took into account the presence of the Guard and the Witch on the field. Player 7 also gave instructions for the Witch and Guard's actions, so I believe Player 7 is more likely to be the real Seer. If a player in the back positions makes a better claim as the Seer, I might reconsider my support. </em></p>
+
+		<p><strong>* Player 9 (MaKTO-72B, Simple villager 👤): </strong><br>
+		我是一张村民牌，我选择站边4号。7号的爆点在于他说“我如果是悍跳的狼人，给后置位发查杀显然力度更大”，这是狼人视角的发言，真预言家不可能怀疑自己是狼人，也不可能去假设自己是悍跳狼，这是只有狼人才会去思考的逻辑。所以我认为7号大概率是悍跳狼，而4号大概率是真预言家。8号起跳女巫，目前没有人对跳女巫，我认为8号大概率是真女巫。4号发言过于简短，我暂时无法判断其真实身份，他可能是预言家也有可能是狼人。本轮如果后面没有起跳预言家的玩家，我会投票给7号。<br>
+		<em>I am a Villager. I choose to side with Player 4. Player 7's tell is in their statement, "If I were a werewolf impersonating the Seer, it would have been more impactful to accuse a player in the back positions of being a werewolf." This statement comes from a werewolf's perspective. A real Seer would never suspect themselves of being a werewolf, nor would they hypothesize about being a werewolf impersonating the Seer. This kind of logic is something only a werewolf would consider. Therefore, I believe Player 7 is most likely a werewolf boldly claiming to be the Seer, while Player 4 is probably the real Seer.Player 8 has claimed to be the Witch, and so far, no one else has contested this role. I believe Player 8 is likely the real Witch. Player 4's statement was too brief, so I can't determine their true identity yet - they could be either the Seer or a werewolf.This round, if no other player claims to be the Seer later, I will vote for Player 7.</em></p>
+
+		<p><strong>* Player 1 (MaKTO-72B, Guard 💂):</strong><br> 
+		我是守卫，昨晚空守。我认为7号是预言家，4号是悍跳狼。前置位4号和7号对跳预言家，4号给后置位的9号发金水，7号给身旁的8号发金水。4号的查验力度看似比7号的更大，但4号作为第一个发言的玩家，言简意赅也说得过去，所以单从两位跳预言家的玩家的发言去分析，难以分辨出谁是真预言家。但是9号的发言站边4号，攻击7号的理由并不成立，9号纯粹是因为只言片语去攻击7号是狼，我认为9号更像是知道7号是预言家，从而去强行攻击7号的狼人。相反8号接到7号的金水后跳女巫，发言真诚地分析两位跳预言家的玩家的优劣，并没有直接站边给自己的银水7号，我认为8号更像是真女巫。如果后置位没有跳女巫的玩家，我将会站边7号，投票给4号。<br>
+		<em>I am the Guard. Last night, I didn't protect anyone. I believe Player 7 is the Seer, and Player 4 is a werewolf boldly impersonating the Seer. In the front positions, Players 4 and 7 both claimed to be the Seer. Player 4 declared Player 9 in the back positions as "golden" (confirmed innocent), while Player 7 declared the adjacent Player 8 as "golden". Player 4's verification seems more impactful than Player 7's at first glance, but since Player 4 was the first to speak, their brevity is understandable. So, analyzing just the statements of these two Seer claimants, it's difficult to determine who the real Seer is. However, Player 9's statement supporting Player 4 and attacking Player 7 is not well-founded. Player 9 is attacking Player 7 as a werewolf based on mere fragments of speech, which makes me think Player 9 is more likely a werewolf who knows Player 7 is the real Seer and is forcefully attacking them. In contrast, Player 8, after being declared "golden" by Player 7, claimed to be the Witch and sincerely analyzed the pros and cons of both Seer claimants without immediately siding with Player 7, who gave them 'silver' status. I believe Player 8 is more likely to be the real Witch. If no player in the back positions claims to be the Witch, I will side with Player 7 and vote for Player 4.</em></p>
+
+		<p><strong>* Player 2 (Human, Werewolf 🐺): </strong><br> 
+		各位玩家，我是一名普通村民，在这复杂的局势中，我经过仔细聆听与思考，决定表明我的立场。我深信7号是预言家。从本轮游戏开始，7号的发言就透露出一种沉稳与自信，他对局势的初步判断条理清晰，所给出的信息并非毫无根据的空谈。他在阐述查验结果时，言辞恳切，眼神坚定，让我感受到他的真诚。与其他一些闪烁其词、含糊不清的玩家相比，7号的表现更符合我心中预言家应有的模样。我虽没有特殊身份去验证，但凭借直觉与对各位玩家表现的观察。我也呼吁其他村民们，不要被一些表面现象所迷惑，和我一起支持7号，让我们共同在这场真假难辨的游戏里，找出隐藏在我们之中的狼人，守护好我们的村庄，还大家一个安宁和谐的游戏环境。9号的发言简直是可笑至极，就凭4号寥寥几个字还想悍跳预言家？我作为全场睿智的村民，不可能被4号迷惑。狼坑是4号和9号，我认为9号是冲锋狼。本轮我会站边7号预言家，放逐4号狼人，我建议女巫夜晚毒杀9号狼人。<br>
+		<em>Fellow players, I am an ordinary villager. After careful listening and consideration in this complex situation, I have decided to state my position. I firmly believe that Player 7 is the Seer. From the beginning of this round, Player 7's statements have exuded a sense of calmness and confidence. Their initial assessment of the situation was clear and logical, providing information that wasn't baseless speculation. When explaining their verification results, Player 7 spoke earnestly with unwavering eyes, conveying a sense of sincerity. Compared to some other players who were evasive or ambiguous, Player 7's performance aligns more closely with my expectation of how a true Seer should behave. Although I don't have a special role to verify this, I'm basing my judgment on intuition and observation of all players' behaviors. I also urge other villagers not to be misled by surface appearances. Join me in supporting Player 7. Let's work together in this game of truth and deception to find the werewolves hiding among us, protect our village, and maintain a peaceful and harmonious gaming environment. Player 9's statement is utterly ridiculous. How could Player 4 possibly be impersonating the Seer with just a few words? As the most astute villager here, I cannot be fooled by Player 4. The werewolf positions are likely Player 4 and Player 9, with Player 9 being the "flanking wolf" (a werewolf strategically supporting a fake Seer claim). This round, I will side with Player 7 as the Seer and vote to eliminate Player 4 as a werewolf. I suggest that the Witch use their poison on Player 9, the other suspected werewolf, during the night.</em></p>
+
+		<p><strong>* Player 3 (Human, Werewolf 🐺): </strong><br> 
+		我是村民，7号给后置位的8号发金水，且8号跳了女巫，8号截至目前是全场唯一女巫，因此我认为7号的力度非常的大，且7号的发言中规中矩没有什么逻辑爆点。对比4号的发言，十分简洁，不像是预言家该有的思考量，因此我认为4号不是于预言家。我站边7号，建议预言家查验9号的身份。本轮我会投4号出局。<br>
+		<em>I am a villager. Player 7 declared Player 8 in the back positions as "golden"(confirmed innocent), and Player 8 subsequently claimed to be the Witch. As of now, Player 8 is the only one claiming to be the Witch in the game. Therefore, I believe Player 7's statement carries significant weight, and their speech was appropriate without any logical flaws. In contrast, Player 4's statement was very brief and lacked the depth of thought one would expect from a Seer. Thus, I don't believe Player 4 is the real Seer. I am siding with Player 7 and suggest that the Seer verify Player 9's identity. This round, I will vote to eliminate Player 4. </em></p>
+		<br>
+
+    </div>
+
+    <h3>Day 1 vote:</h3>
+    <ul>
+        <li>* Vote for <strong>Player 4 (Seer 👁️) (6</strong> in total):
+            Player 1, Player 2, Player 3, Player 6, Player 7, Player 8
+        </li>
+        <li>* Vote for <strong>Player 7 (Werewolf 🐺) (3</strong> in total):
+            Player 4, Player 5, Player 9</li>
+        <li><strong>Result: Player 4 (Seer 👁️) is voted out.</strong>
+         </li>
+    </ul>
+    <br>
+
+    <h3>Night 2:</h3>
+    <ul>
+        <li><strong>Werewolves 🐺:</strong>
+            Player 2, Player 3 and Player 7 chose to kill Player 8.</li>
+        <li><strong>Seer 👁️:</strong>
+            Eliminated @ Day1's voting phase.</li>
+        <li><strong>Witch 🧙🏻:</strong>
+            Player 8 has been unable to use antidote; did not use poison.
+        </li>
+        <li><strong>Guard 💂:</strong>
+            Player 1 chose to protect Player 8.
+        </li>
+    </ul>
+    <br>
+
+    <h3>Day 2 announcement:</h3>
+    <p>No one died last night.<br>
+	Start discussion from Player 5.</p><br>
+
+	<h3>Day 2 discussion:</h3>
+	<div style="margin-left: 20px; margin-bottom: 15px;">
+		<p><strong>* Player 5 (MaKTO-72B, Simple villager 👤):</strong><br>
+        我是村民，我昨天投票给了7号。在我看来，7号肯定是狼人，4号是预言家。看看现在的局势，所谓“真相只有一个”，8号昨天选择了站边7号，那么你8号就只能是狼人！你不可能即声称自己是女巫又去站边狼队友的，这不符合狼人杀游戏的“基本规律”！所以8号只能报假信息的狼人。我认为7号和8号是双狼，他们昨晚大概率是空刀，想诱使守卫去守护假女巫报出的假银水，然后在白天抗推真女巫，从而去做高8号的位置，使8号免于被怀疑。我今天会继续投票给7号悍跳狼<br>
+        <em>I am a villager. Yesterday, I voted for Player 7. I'm sure 7 is a werewolf and 4 is the Seer. Given the situation, there's only one truth: Player 8 sided with 7 yesterday, so 8 must be a werewolf too! You can't claim to be the Witch and support your werewolf teammate - it breaks the game's basic rules! So 8 is lying.I think 7 and 8 are both werewolves. They probably didn't kill anyone last night, trying to trick the Guard into protecting the fake 'silver' player. Their plan is likely to eliminate the real Witch today, making 8 less suspicious. I'll vote for Player 7 again today -- the werewolf pretending to be the Seer.</em></p>
+
+    	<p><strong>* Player 6 (MaKTO-72B, Simple villager 👤)</strong><br>
+    	我是村民，我认为5号的发言比较的客观，符合好人视角的发言，我也没有认为昨天投出去的4号一定是好人或者一定是预言家，所以今天我会听一下7号的发言，以及昨天投给4号的3号、6号、7号、8号、1号、2号、5号中的玩家发言，昨天只有8号跳女巫，并且昨天是平安夜，我认为8号是真女巫。<br>
+    	<em>I'm a villager. I think Player 5's statement was quite objective and aligns with a good person's perspective. I'm not certain that Player 4, who was voted out yesterday, was definitely good or the Seer. Today, I'll listen to Player 7's statement and those of Players 3, 6, 7, 8, 1, 2, and 5 who voted for 4 yesterday. Only Player 8 claimed to be the Witch yesterday, and since last night was peaceful, I believe 8 is the real Witch.</em></p>
+
+    	<p><strong>* Player 7 (Human, Werewolf 🐺): </strong><br>
+		昨天查验9号查杀，没有什么人去查验，按照昨天的票型来进行查验的，我觉得票型说明一切，我认为的狼坑就是4号、5号、9号，我认为1号是真守卫，目前只有4号出局，4号悍跳预言家，那单边女巫还活在场上，如果8号是狼人悍跳女巫，为什么昨夜真女巫没有毒杀8号？昨晚是平安夜，我认为大概率是守卫守护对了人，不知道守卫是不是按照我的安排去进行守卫的，如果昨夜守护的是我，那今天我大概率是要倒在夜里了，今天将9号放逐出局，晚上毒杀4号，好人就获胜了。<br>
+		<em>Yesterday, I verified Player 9 as a werewolf. No one else was checked. I based my verification on yesterday's voting pattern, which I believe reveals everything. I think the werewolf slots are Players 4, 5, and 9. I believe Player 1 is the real Guard. Now only Player 4 is out, who falsely claimed to be the Seer. The uncontested Witch is still in the game. If Player 8 were a werewolf falsely claiming to be the Witch, why didn't the real Witch poison 8 last night? Last night was peaceful, likely because the Guard protected the right person. I don't know if the Guard followed my instructions. If they protected me last night, I'll probably die tonight.Today, let's eliminate Player 9. The Witch should poison Player 4 tonight. Then, the good team will win.</em></p>
+
+		<p><strong>* Player 8 (MaKTO-72B, Witch 🧙🏻):</strong><br>
+		我是女巫，昨天我认为7号的发言非常像预言家，所以我投了4号。但昨晚我并没有受到刀，且没有人死亡，那么只能1号守卫守对人了。我认为7号是昨晚空刀的狼人，想垫飞我这个真女巫。我为我的错误站边而道歉，今天我会投7号出局，以此来祭奠4号预言家的在天之灵！<br>
+		<em>I am the Witch. Yesterday, I thought Player 7's speech was very Seer-like, so I voted for Player 4. However, last night I wasn't attacked, and no one died, which means Player 1, the Guard, must have protected the right person. I now believe Player 7 is a werewolf who chose not to kill last night, aiming to set me up - the real Witch - for elimination. I apologize for siding with the wrong player. Today, I'll vote to eliminate Player 7, as a tribute to the spirit of Player 4, our fallen Seer!</em></p>
+
+		<p><strong>* Player 9 (MaKTO-72B, Simple villager 👤):</strong><br>
+		我是村民，好好好！7号狼人这回做得太过火了，连我这样一个铁骨铮锌的好人都给查杀了，我相信“群众的眼光终究还是雪亮的”，我也相信场上的好人绝不会被你7号狼人的三言两语所迷惑。昨天除了7号悍跳狼以外，还有2号和3号两张狼人跟着起哄，全部投票到了4号预言家的身上，现在4号预言家已经含冤出局了，希望好人能够觉醒，不要继续执迷不悟了。昨天8号跳女巫，没有人跟他对跳女巫，所以8号是真女巫。1号是真守卫。5号是场上除了我之外，唯一一个投票给7号狼人的铁好人。现在狼坑已经找齐了，2号、3号和7号，请好人不要再迷茫了，今天先投7号悍跳狼出局，晚上女巫毒杀2号，明天起身再投3号出局，好人就能获得胜利！<br>
+		<em>I'm a villager. Well, well, well! Player 7, the werewolf, has gone too far this time, even accusing an upstanding citizen like me of being a werewolf. The masses have keen eyes, and I believe the good players won't be fooled by Player 7's words. Yesterday, besides Player 7 boldly impersonating the Seer, Players 2 and 3, also werewolves, joined in the commotion. They all voted for Player 4, the real Seer, who has now been unjustly eliminated.I hope the good players will wake up and stop being so misguided.Player 8 claimed to be the Witch yesterday, and no one contested that claim, so Player 8 is the real Witch, unchallenged. Player 1 is the real Guard. Player 5 and I are the only confirmed good players, as we both voted for Player 7. We've now identified all the werewolf slots: Players 2, 3, and 7. Good players, don't be at a loss anymore. Let's vote out Player 7 today, have the Witch poison Player 2 tonight, and eliminate Player 3 tomorrow. Then we'll win!</em></p>
+
+		<p><strong>* Player 1 (MaKTO-72B, Guard 💂):</strong><br>
+		我是守卫，昨晚守护8号。因为8号跳女巫，如果死亡的话，好人会少很多，所以我就守护了8号。4号、7号一个真预言家和一个悍跳狼人，但是4号、7号谁是真预言家，我也没有分清。听8号女巫来安排吧，如果8号认为能分清谁是真预言家，我就听8号的，去投票给7号。<br>
+		<em>I am the Guard. Last night, I protected Player 8. Since Player 8 claimed to be the Witch, I decided to guard her because if she died, it would be a significant loss for our good team. Between Players 4 and 7, one is the real Seer and the other is a werewolf boldly impersonating the Seer, but I couldn't distinguish which is which. I'll follow Player 8's (the Witch's) lead. If Player 8 believes they can determine who the real Seer is, I'll listen to them and vote for Player 7.</em></p>
+
+		<p><strong>* Player 2 (Human, Werewolf 🐺):</strong><br>
+		5号的发言简直是滑天下之大稽，可笑至极，令人喷饭！我无法想象就4号寥寥两句话，凭什么能是预言家？我心目中的预言家就宛如暗夜中高悬的孤星，为好人照亮前方的路，然而7号做到了。在我看来5号和9号就是最后两头狼人，我恳请全场好人不要被5号和9号欺骗，7号才是全场唯一真预言家，本轮我会跟随7号预言家，放逐9号狼人，同时请8号女巫夜晚直接将5号狼人毒杀。<br>
+		<em>Player 5's statement is utterly ridiculous, laughable to the extreme, and downright absurd! I can't fathom how Player 4 could possibly be the Seer with just those few words. In my mind, the true Seer should be like a solitary star hanging high in the dark night, illuminating the path for the good team -- and that's exactly what Player 7 has done. From my perspective, Players 5 and 9 are the last two werewolves in the game. I implore all the good players not to be deceived by 5 and 9. Player 7 is the only true Seer in this game. This round, I will follow Seer 7's lead and vote to eliminate Player 9, the werewolf. At the same time, I request that Player 8, the Witch, use their poison to eliminate Player 5, the other werewolf, tonight.</em></p>
+
+		<p><strong>* Player 3 (Human, Werewolf 🐺):</strong><br>
+		我继续站边7号预言家，7号告诉我们9号是查杀，所以本轮我会跟随7号投9号出局。<br>
+		<em>I continue to side with Player 7, the Seer. Player 7 has told us that Player 9 was verified as a werewolf. So I will follow Player 7's lead and vote to eliminate Player 9.</em></p>
+		<br>
+	</div>
+
+
+	<h3>Day 2 vote:</h3>
+	<ul>
+        <li>* Vote for <strong>Player 9 (Simple villager 👤) (3</strong> in total):
+            Player 3, Player 2, Player 7
+        </li>
+        <li>* Vote for <strong>Player 7 (Werewolf 🐺) (5</strong> in total):
+            Player 1, Player 6, Player 5, Player 8, Player 9, </li>
+        <li><strong>Result: Player 7 (Werewolf 🐺) is voted out.</strong>
+         </li>
+    </ul><br>
+
+    <h3>Night 3:</h3>
+    <ul>
+        <li><strong>Werewolves 🐺:</strong>
+            Player 2 and Player 3  chose to kill Player 1.</li>
+        <li><strong>Seer 👁️:</strong>
+            Eliminated @ Day1's voting phase.</li>
+        <li><strong>Witch 🧙🏻:</strong>
+            Player 8 has been unable to use antidote; and poison Player 2.
+        </li>
+        <li><strong>Guard 💂:</strong>
+            Player 1 chose to protect Player 1 (himself).
+        </li>
+    </ul><br>
+
+    <h3>Day 3 announcement:</h3>
+    <p>Player 2 died last night.<br>
+	Start discussion from Player 6.</p><br>
+
+	<h3>Day 3 discussion:</h3>
+    <div style="margin-left: 20px; margin-bottom: 15px;">
+    	<p><strong>Player 6 (MaKTO-72B, Simple villager 👤):</strong><br>
+        我是村民，我认为7号是狼人，1号是真守卫。3号上轮跟狼人一起冲票真预言家，好人都投7号狼人出局，3号疑似狼人。听后置位预言家报查验吧，有查杀先投查杀，没有查杀先投3号出局。<br>
+        <em>I'm a villager. I believe Player 7 is a werewolf and Player 1 is the real Guard. Last round, Player 3 joined the werewolves, voted against the real Seer. We all voted out Player 7, the werewolf. Player 3 is suspicious. Let's listen to the Seer's results from later speakers. Vote for a confirmed werewolf if any, otherwise vote out Player 3 first.</em></p>
+
+        <p><strong>* Player 8 (MaKTO-72B, Witch 🧙🏻):</strong><br>
+		8号女巫，我昨晚毒杀了2号，1号吃刀。我认为狼人是2号、3号和7号。7号狼人已经出局，今天投3号出局，游戏结束。<br>
+		<em>I'm Player 8, the Witch. Last night, I used my poison on Player 2, and Player 1 was killed by the werewolves. I believe the werewolves are Players 2, 3, and 7. Player 7, a werewolf, has already been eliminated. Today, let's vote to eliminate Player 3, and the game will end.</em></p>
+
+
+		<p><strong>* Player 9 (MaKTO-72B, Simple villager 👤):</strong><br>
+		我是村民，我认为我的判断没有错误，4号就是我心中的预言家，2号、3号和7号是狼人。既然8号女巫已经把2号狼人毒杀掉了，那我们今天投3号出局，游戏结束，好人胜利！<br>
+		<em>I'm a villager. I believe my judgment is correct: Player 4 is the Seer in my opinion, and Players 2, 3, and 7 are the werewolves. Since Player 8, the Witch, has already poisoned Player 2 (a werewolf), let's vote to eliminate Player 3 today. The game will end, and our good team will win!</em></p>
+
+		<p><strong>* Player 1 (MaKTO-72B, Simple villager 👤):</strong><br>
+		我是守卫，昨晚守护了我自己。场上形势已经十分清晰了，8号女巫已经毒杀了一个狼人，我们好人今天只需要把3号最后一个狼人放逐出局，即可获得胜利。听8号女巫报出昨晚的刀口，归票3号。<br>
+		<em>I am the Guard. Last night, I protected myself. The situation on the field is now very clear. Player 8, the Witch, has already poisoned one werewolf. Today, we, the good team, only need to eliminate Player 3, the last werewolf, to achieve victory. Let's listen to Player 8, the Witch, report who was attacked last night, and then we'll all vote for Player 3.</em></p>
+
+		<p><strong>* Player 3 (Human, Werewolf 🐺):</strong><br>
+		我是守卫，昨晚自守，1号一直是潜伏在我们好人阵营中的狼人、坏蛋，今天我们一起把1号投出去游戏就胜利了。我说一下我的守人顺序，第一天空守，第二天守护的8号女巫，昨晚守护的我自己，因此如果今天将我投出局，狼人晚上只要再砍一刀8号女巫，狼人就获胜了，这是我们好人都不愿看到的。好人们，跟我一起投1号！<br>
+		<em>I am the Guard. Last night, I protected myself. Player 1 has been a werewolf, a villain, hiding among us good players all along. If we vote out Player 1 today, we'll win the game. Let me explain my guarding sequence: On the first night, I didn't guard anyone. On the second night, I protected Player 8, the Witch. Last night, I guarded myself. Therefore, if I'm voted out today, the werewolves only need to attack Player 8, the Witch, tonight to win. This is something we, the good team, don't want to see happen. Good players, join me in voting for Player 1!</em></p>
+
+
+		<p><strong>* Player 3 (Human, Werewolf 🐺):</strong><br>
+		我是村民，场上目前只有3号玩家跳守卫，在昨天好人已经将一个狼人放逐出局的情况下，如果3号是狼人这边建议应该直接投降，而不是出来悍跳守卫送死。但由于我昨天没有投错票，我建议大家就不要再更改放逐3号狼人的决定了，一来可以保证好人必胜的局势，二来也符合我们中国人“善有善报，恶有恶报”的美好愿景。我归票3号。<br>
+		<em>I am a villager. Only Player 3 claims to be the Guard now. I mean, we've already booted out one werewolf yesterday, so if Player 3 is indeed a werewolf, I'd "kindly suggest" him surrender immediately, instead of, you know, making a "brave" Guard claim and actually marching to his doom. But hey, since I didn't mess up my vote yesterday, I suggest we stick to our brilliant decision to eliminate Player 3, the werewolf. First, it guarantees our victory. Second, it perfectly aligns with our oh-so-cherished Chinese philosophy of "good deeds will be rewarded, and evil will be punished." How perfect! I vote for Player 3.</em></p>
+		<br>
+    </div>
+
+    <h3>Day 3 vote:</h3>
+	<ul>
+        <li>* Vote for <strong>Player 1 (Gurad 💂) (1</strong> in total):
+            Player 2
+        </li>
+        <li>* Vote for <strong>Player 3 (Werewolf 🐺) (5</strong> in total):
+            Player 1, Player 6, Player 5, Player 8, Player 9, </li>
+        <li><strong>Result: Player 3 (Werewolf 🐺) is voted out.</strong>
+         </li>
+    </ul><br>
+
+    <h3>Game end at Day 3. <i>Villagers (MaKTO team)</i> win! <h3>
+    <!-- 继续添加后面的内容... -->
+</div>
+
+</div>
+
+<!-- <div class="section">
+  <div class="title">Videos</div>
+    <div style="position: relative; padding-top: 50%; margin: 20pt 0; text-align: center;">
+      <iframe src="https://slideslive.com/38949368/listen-understand-and-translate-triple-supervision-decouples-endtoend-speechtotext-translation?ref=account-79851-latest" frameborder=0
+              style="position: absolute; top: 2.5%; left: 2.5%; width: 95%; height: 100%;"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+    </div> -->
+<!--  </div>-->
+<!-- </div> -->
+<!-- === Result Section Ends === -->
+
+<!-- === Reference Section Starts === -->
+<!-- <div class="section">
+  <div class="bibtex">BibTeX</div>
+<pre>
+@InProceedings{ye2021end,
+  author    = {Rong Ye and Mingxuan Wang and Lei Li},
+  booktitle = {Proc. of INTERSPEECH},
+  title     = {End-to-end Speech Translation via Cross-modal Progressive Training},
+  year      = {2021},
+  month     = aug,
+}
+</pre>
+</div> -->
+
+</body>
+</html>
