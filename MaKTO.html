@@ -1,174 +1,452 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
-
-<!-- === Header Starts === -->
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="description" content="Multi-agent KTO: Reinforcing Strategic Interactions of Large Language Model in Language Game">
+  <meta name="keywords" content="MaKTO, Werewolf, Language Game, LLM, Strategic Interaction">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MaKTO-Werewolf: Reinforcing Strategic Interactions of Large Language Model in Language Game</title>
 
-  <title>MaKTO-Werewolf</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-slider@2.0.5/dist/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  
+  <style>
+    .publication-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+    }
+    
+    .publication-authors {
+      margin: 1.5rem 0;
+      line-height: 1.6;
+    }
+    
+    .author-block {
+      margin: 0 0.25rem;
+    }
+    
+    .publication-links {
+      margin-top: 2rem;
+    }
+    
+    .link-block {
+      margin: 0 0.5rem;
+    }
+    
+    .external-link {
+      margin: 0 0.3rem;
+    }
+    
+    .case-study-container {
+      height: 800px; 
+      overflow-y: auto; 
+      border: 1px solid #e0e0e0; 
+      border-radius: 8px; 
+      padding: 20px;
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 1.5rem 0;
+    }
 
-  <link href="./assets/projects/XSTNet/assets/bootstrap.min.css" rel="stylesheet">
-  <link href="./assets/projects/XSTNet/assets/font.css" rel="stylesheet" type="text/css">
-  <link href="./assets/projects/XSTNet/assets/style.css" rel="stylesheet" type="text/css">
-<!--  <link rel="stylesheet" type="text/css" href="./assets/bootstrap.min.css">-->
+    .results-table {
+      margin: 20pt 0;
+      width: 100%;
+      text-align: center;
+    }
 
-  <link rel="stylesheet" type="text/css" href="./assets/projects/XSTNet/assets/font-awesome.min.css">
+    .teaser {
+      text-align: center;
+      margin: 2rem 0;
+    }
+    
+    .footer {
+      padding: 3rem 1.5rem;
+      background-color: #fafafa;
+    }
+  </style>
 
-  <link rel="stylesheet" type="text/css" href="./assets/projects/XSTNet/assets/animate.css">
-
-  <link rel="stylesheet" type="text/css" href="./assets/projects/XSTNet/assets/select2.min.css">
-
-  <link rel="stylesheet" type="text/css" href="./assets/projects/XSTNet/assets/perfect-scrollbar.css">
-
-  <link rel="stylesheet" type="text/css" href="./assets/projects/XSTNet/assets/util.css">
-  <link rel="stylesheet" type="text/css" href="./assets/projects/XSTNet/assets/main.css">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.24/dist/js/bulma-carousel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bulma-slider@2.0.5/dist/js/bulma-slider.min.js"></script>
 </head>
-<!-- === Header Ends === -->
-
-
 
 <body>
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">
+        <strong>🐺MaKTO-Werewolf</strong>
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="navbarMenu" class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <a class="navbar-item" href="#abstract">Abstract</a>
+        <a class="navbar-item" href="#method">Method</a>
+        <a class="navbar-item" href="#results">Results</a>
+        <a class="navbar-item" href="#case-study">Case Study</a>
+      </div>
+    </div>
+  </nav>
 
+  <!-- Hero Section -->
+  <section class="hero is-light is-halfheight">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <h1 class="title is-1 publication-title">
+              <b>Multi-agent KTO</b>: Reinforcing Strategic Interactions of Large Language Model in Language Game
+            </h1>
+            <div class="is-size-4 publication-authors">
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=zh-CN&user=UV4u5UQAAAAJ">Rong Ye</a><sup>1,2</sup>,</span>
+              <span class="author-block">
+                <a href="">Yongxin Zhang</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=HtS6oQgAAAAJ">Yikai Zhang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="">Haoyu Kuang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=AjLDxxgAAAAJ">Zhongyu Wei</a><sup>2</sup>,</span>
+              <span class="author-block">
+                <a href="https://pengsun.github.io/">Peng Sun</a><sup>2</sup></span>
+            </div>
 
-<!-- === Home Section Starts === -->
-<div class="section">
-  <!-- === Title Starts === -->
-  <div class="header">
-    <div class="title", style="padding-top: 0pt;">  <!-- Set padding as 10 if title is with two lines. -->
-      <b>Multi-agent KTO</b>: Reinforcing Strategic Interactions of Large Language Model in Language Game
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Fudan University,</span>
+              <span class="author-block"><sup>2</sup>ByteDance Research</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2501.14225" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://github.com/ReneeYe/MaKTO-Werewolf" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/ReneeYe/werewolf_game_reasoning" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-database"></i>
+                    </span>
+                    <span>Dataset</span>
+                  </a>
+                </span>
+                <div class="mt-2 is-size-5">
+  (Code repository is private now, you may email 
+  <a href="mailto:yerong@bytedance.com" style="color: #3273dc; text-decoration: underline;" onmouseover="this.style.color='#1d56a5'" onmouseout="this.style.color='#3273dc'">
+    yerong@bytedance.com
+  </a> 
+  to get the code.)
+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract Section -->
+  <section class="section" id="abstract">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <div class="card">
+            <div class="card-image has-text-centered">
+              <figure class="image">
+                <img src="./assets/projects/MaKTO/assets/motivation.png" alt="Comparative Analysis of Language-Decision Frameworks" style="width: 100%;">
+              </figure>
+            </div>
+            <div class="card-content has-background-light">
+              <p class="content has-text-justified">
+                <i>
+                  <b>Comparative Analysis of Language-Decision Frameworks.</b> Figure (a) and (b) illustrate the Language and Picture Theory and the two-stage framework, where linguistic expression is separated from decision-making intent. In contrast, Figure (c) and (d) present our proposed framework inspired by Wittgenstein's language game theory (<i>Philosophical Investigations, 1953</i>), which integrates language, actions, and intentions within a multi-agent language game environment.
+                </i>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="content has-text-justified">
+            <h2 class="title is-2 has-text-centered">Abstract</h2>
+            <p>
+              Achieving Artificial General Intelligence (AGI) requires AI agents that can not only make strategic decisions but also engage in flexible and meaningful communication. Inspired by Wittgenstein's language game theory in <i>Philosophical Investigations</i>, we propose that language agents can learn through in-context interaction rather than traditional multi-stage frameworks that separate decision-making from language expression.
+            </p>
+            <p>
+              Using <i><a href="https://en.wikipedia.org/wiki/Mafia_(party_game)">Werewolf</a></i>, a social deduction game that tests language understanding, strategic interaction, and adaptability, we develop <b>Multi-agent Kahneman & Tversky's Optimization (MaKTO)</b>. <b>MaKTO</b> engages diverse models in extensive gameplay to generate unpaired desirable and unacceptable responses, then employs KTO to refine the model's decision-making process.
+            </p>
+            <p>
+              In 9-player Werewolf games, MaKTO achieves a <b>61%</b> average win rate across various models, outperforming GPT-4o and two-stage RL agents by relative improvements of <b>23.0%</b> and <b>10.9%</b>, respectively. Notably, MaKTO also demonstrates human-like performance, winning <b>60%</b> against expert players and showing only <b>49% detectability</b> in Turing-style blind tests.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Method Section -->
+  <section class="section" id="method">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content has-text-justified">
+            <h2 class="title is-2 has-text-centered">Method Overview</h2>
+            <p>
+              Our method contains two steps:
+            </p>
+          </div>
+          <div class="columns">
+            <div class="column is-half">
+              <div class="content has-text-justified">
+                <h3 class="title is-4">Step 1: Behavior cloning</h3>
+                <p>
+                  From fundamental game comprehension data, advanced gaming techniques, and the annotated expert data of authentic gaming behavior with reasoning process for each game stage; the dataset of authentic gaming behavior can be downloaded <a href="">here</a>.
+                </p>
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="content has-text-justified">
+                <h3 class="title is-4">Step 2: Multi-agent KTO</h3>
+                <p>
+                  In the multi-agent gameplay, we randomly assign the role to different models or agents in the game, and let the training model interact with various models to enhance robustness. Finally, we apply a stepwise selection method to identify and extract desirable and unacceptable responses from extensive random multi-agent gameplay data, and use KTO to further optimize the model.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="has-text-centered">
+            <figure class="image">
+              <img src="./assets/projects/MaKTO/assets/method.png" alt="Method Overview" style="width: 90%; display: inline-block;">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Results Section with Improved Tables and Larger Content -->
+<section class="section" id="results">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-2 has-text-centered">Results</h2>
+          <p class="has-text-centered is-size-4 mb-5">
+            We evaluate the performance of MaKTO-72b in tournament evaluations across both <strong>inter-agent</strong> and <strong>human-agent</strong> competitions.
+          </p>
+          
+          <!-- Competition Type Tabs -->
+          <div class="tabs is-centered is-boxed is-medium mb-5">
+            <ul>
+              <li class="is-active" data-target="head-to-head-tab">
+                <a>
+                  <span class="icon"><i class="fas fa-handshake"></i></span>
+                  <span><strong>Head-to-Head</strong></span>
+                </a>
+              </li>
+              <li data-target="random-tab">
+                <a>
+                  <span class="icon"><i class="fas fa-random"></i></span>
+                  <span><strong>Random</strong></span>
+                </a>
+              </li>
+              <li data-target="turing-tab">
+                <a>
+                  <span class="icon"><i class="fas fa-robot"></i></span>
+                  <span><strong>Turing Test</strong></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          <!-- Head-to-Head Tab Content -->
+          <div id="head-to-head-tab" class="tab-content">
+            <div class="columns is-centered">
+              <div class="column">
+                <div class="card has-background-white-ter">
+                  <div class="card-header">
+                    <div class="card-header-title is-centered is-size-4">
+                      <span class="icon mr-2 is-medium"><i class="fas fa-desktop fa-lg"></i></span>
+                      Inter-agent Competition
+                    </div>
+                  </div>
+                  <div class="card-content has-text-centered py-5">
+                    <figure class="image mx-auto" style="max-width: 90%;">
+                      <img src="./assets/projects/MaKTO/assets/ai-head.png" style="display: inline-block;">
+                      <figcaption class="mt-4 is-size-5" style="font-weight: 500;">
+                        MaKTO-72b has the highest average win rates (<span class="has-text-success">61%</span>) in the Seer-Witch-Guard setting.
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="card has-background-white-ter">
+                  <div class="card-header">
+                    <div class="card-header-title is-centered is-size-4">
+                      <span class="icon mr-2 is-medium"><i class="fas fa-user fa-lg"></i></span>
+                      Human-agent Competition
+                    </div>
+                  </div>
+                  <div class="card-content has-text-centered py-5">
+                    <figure class="image mx-auto" style="max-width: 90%;">
+                      <img src="./assets/projects/MaKTO/assets/human-head.png" style="display: inline-block;">
+                      <figcaption class="mt-4 is-size-5" style="font-weight: 500;">
+                        The average win rate of MaKTO-72b in head-to-head competition with humans is <span class="has-text-success">60%</span>.
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Random Tab Content -->
+          <div id="random-tab" class="tab-content" style="display: none;">
+            <div class="columns is-centered">
+              <div class="column">
+                <div class="card has-background-white-ter">
+                  <div class="card-header">
+                    <div class="card-header-title is-centered is-size-4">
+                      <span class="icon mr-2 is-medium"><i class="fas fa-desktop fa-lg"></i></span>
+                      Inter-agent Competition
+                    </div>
+                  </div>
+                  <div class="card-content has-text-centered py-5">
+                    <figure class="image mx-auto" style="max-width: 95%;">
+                      <img src="./assets/projects/MaKTO/assets/random.png" style="display: inline-block;">
+                      <figcaption class="mt-4 is-size-5" style="font-weight: 500;">
+                        MaKTO-72b has the <span class="has-text-success">highest TrueSkill score</span> in Seer-Witch-Guard setting.
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+              <div class="column">
+                <div class="card has-background-white-ter">
+                  <div class="card-header">
+                    <div class="card-header-title is-centered is-size-4">
+                      <span class="icon mr-2 is-medium"><i class="fas fa-user fa-lg"></i></span>
+                      Human-agent Competition
+                    </div>
+                  </div>
+                  <div class="card-content has-text-centered py-5">
+                    <figure class="image mx-auto" style="max-width: 95%;">
+                      <img src="./assets/projects/MaKTO/assets/human-rand.png" style="display: inline-block;">
+                      <figcaption class="mt-4 is-size-5" style="font-weight: 500;">
+                        MaKTO-72b achieves a <span class="has-text-success">61.8%</span> win rate, ranking fourth among all players and surpassing the average human win rate of 54.0%.
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Turing Test Tab Content -->
+          <div id="turing-tab" class="tab-content" style="display: none;">
+            <div class="box has-background-light p-6">
+              <div class="columns is-vcentered">
+                <div class="column is-8">
+                  <h4 class="title is-3">Turing-Style Blind Detectability Test</h4>
+                  <div class="content is-size-5">
+                    <ul class="ml-5 mt-4">
+                      <li class="mb-3">MaKTO achieved a detection rate of only <strong class="has-text-success">48.9%</strong>, lower than random chance</li>
+                      <li class="mb-3">GPT-4o had a much higher detection rate of <strong class="has-text-danger">76.6%</strong></li>
+                      <li class="mb-3">Our model successfully passes this specialized Turing test by convincingly emulating human-like gameplay characteristics and social behaviors</li>
+                    </ul>
+                    <p class="has-text-success has-text-centered is-size-4 mt-5" style="font-weight: bold;">
+                      <span class="icon"><i class="fas fa-check-circle"></i></span>
+                      MaKTO is indistinguishable from human players
+                    </p>
+                  </div>
+                </div>
+                <div class="column is-4">
+                  <figure class="image has-text-centered">
+                    <img src="./assets/projects/MaKTO/assets/turing.png" style="max-width: 95%; display: inline-block;">
+                  </figure>
+                </div>
+              </div>
+            </div>
+            
+            <div class="notification is-info is-light mt-5 is-size-5">
+              <p class="has-text-centered">
+                <span class="icon"><i class="fas fa-info-circle"></i></span>
+                We also conducted behavior analysis, generalization experiments, and ablation studies. Please refer to our paper for detailed results.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  <!-- === Title Ends === -->
-  <div class="author">
-    <a href="https://scholar.google.com/citations?hl=zh-CN&user=UV4u5UQAAAAJ">Rong Ye</a><sup>1,2</sup>,&nbsp;
-    <a href="">Yongxin Zhang</a><sup>2</sup>,&nbsp;
-    <a href="https://scholar.google.com/citations?user=HtS6oQgAAAAJ">Yikai Zhang</a><sup>1</sup>,&nbsp;
-    <a href="">Haoyu Kuang</a><sup>1</sup>,&nbsp;
-    <a href="https://scholar.google.com/citations?user=AjLDxxgAAAAJ">Zhongyu Wei</a><sup>2</sup>,&nbsp;
-    <a href="https://pengsun.github.io/">Peng Sun</a><sup>2</sup>
-  </div>
-  <div class="institution">
-  		<sup>1</sup>Fudan University
-      <sup>2</sup>ByteDance Research
-  </div>
-  <div class="link">
-    <a href="">[Paper]</a>&nbsp;
-    <a href="">[Code]</a>&nbsp;
-    <a href="">[Dataset]</a> (all coming soon)
-  </div>
-</div>
-<!-- === Home Section Ends === -->
+  
+  <!-- JavaScript for tab switching -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get all tabs
+      const tabs = document.querySelectorAll('.tabs li');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      // Add click event to each tab
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Remove active class from all tabs
+          tabs.forEach(t => t.classList.remove('is-active'));
+          // Add active class to clicked tab
+          tab.classList.add('is-active');
+          
+          // Hide all tab contents
+          tabContents.forEach(content => {
+            content.style.display = 'none';
+          });
+          
+          // Show the selected tab content
+          const targetId = tab.dataset.target;
+          document.getElementById(targetId).style.display = 'block';
+        });
+      });
+    });
+  </script>
+</section>
 
-
-<!-- === Abstract Section Starts === -->
-<div class="section">
-  <div class="title">Abstract</div>
-  <div class="body">
-    <!-- b>Cross S</b>peech-<b>T</b>ext <b>Net</b>work (<b>XSTNet</b>), an end-to-end model for speech-to-text translation. 
-    <b>XSTNet</b> takes both speech and text as input and outputs both transcription and translation text. 
-    The model benefits from its three key design aspects: 
-    <b>1)</b> a self-supervised pre-trained sub-network as the audio encoder,
-    <b>2)</b> a multi-task training objective to exploit additional parallel bilingual text, and 
-    <b>3)</b> a progressive training procedure. -->
-
-    Achieving Artificial General Intelligence (AGI) requires AI agents that can not only make stratigic decisions but also engage in flexible and meaningful communication. Inspired by Wittgenstein's language game theory in <i>Philosophical Investigations</i>, we propose that language agents can learn through in-context interaction rather than traditional multi-stage frameworks that separate decision-making from language expression. Using <i><a href="https://en.wikipedia.org/wiki/Mafia_(party_game)">Werewolf</a></i>, a social deduction game that tests language understanding, strategic interaction, and adaptability, we develop <b>Multi-agent Kahneman & Tversky's Optimization (MaKTO)</b>. <b>MaKTO</b> engages diverse models in extensive gameplay to generate unpaired desirable and unacceptable responses, then employs KTO to refine the model's decision-making process. In 9-player Werewolf games, MaKTO achieves a <b>61%</b> average win rate across various models, outperforming GPT-4o and two-stage RL agents by relative improvements of <b>23.0%</b> and <b>10.9%</b>, respectively.
-    Notably, MaKTO also demonstrates human-like performance, winning <b>60%</b> against expert players and showing only <b>49% detectability</b> in Turing-style blind tests. These results showcase MaKTO's superior decision-making, strategic adaptation, and natural language generation in complex social deduction games.
-
-  </div>
-  <div class="teaser">
-    <!-- <img src="./assets/projects/MaKTO/assets/Wittgenstein_18.gif" width="30%" > -->
-    <img src="./assets/projects/MaKTO/assets/motivation.png" width="110%" >
-    <figcaption><b>Comparative Analysis of Language-Decision Frameworks: A Dual Perspective from Language Theory and AI Architecture.</b> Figure (a) and (b) illustrate the Language and Picture Theory and the two-stage framework, where linguistic expression is separated from decision-making intent. In contrast, Figure (c) and (d) present our proposed framework inspired by Wittgenstein's language game theory (<i>Philosophical Investigations, 1953</i>), which integrates language, actions, and intentions within a multi-agent language game environment.</figcaption>
-  </div>
-</div>
-<!-- === Abstract Section Ends === -->
-
-<!-- === Motivation Section Starts === -->
-<!-- === Motivation Section Ends === -->
-
-
-
-<!-- === Method Section Starts === -->
-<div class="section">
-  <div class="title">Method Overview</div>
-  <div class="body">
-    <!-- b>Cross S</b>peech-<b>T</b>ext <b>Net</b>work (<b>XSTNet</b>), an end-to-end model for speech-to-text translation. 
-    <b>XSTNet</b> takes both speech and text as input and outputs both transcription and translation text. 
-    The model benefits from its three key design aspects: 
-    <b>1)</b> a self-supervised pre-trained sub-network as the audio encoder,
-    <b>2)</b> a multi-task training objective to exploit additional parallel bilingual text, and 
-    <b>3)</b> a progressive training procedure. -->
-
-    <div class="body">Our method contains two steps:</div>
-    <div class="body"><b>Step 1: Behavior cloning</b> from fundamental game comprehension data, advanced gaming techniques, and the annotated expert data of authentic gaming behavior with reasoning process for each game stage; the dataset of authentic gaming behavior can be downloaded <a href="">here</a>. </div>
-    <div class="body"><b>Step 2: Multi-agent KTO</b> In the multi-agent gameplay, we randomly assign the role to different models or agents in the game, and let the training model interact with various models to enhance robustness. Finally, we apply a stepwise selection method to identify and extract desirable and unacceptable responses from extensive random multi-agent gameplay data, and use KTO to further optimize the model.</div>
-
-
-  </div>
-  <div class="teaser">
-    <img src="./assets/projects/MaKTO/assets/method.png" width="60%" >
-  </div>
-</div>
-<!-- === Method Section Ends === -->
-
-
-<!-- === Result Section Starts === -->
-<div class="section">
-  <div class="title">Results</div>
-  <div class="body">
-	We evaluate the performance of the MaKTO-72b in <b>tournament evaluations</b>, which included both inter-agent and human-agent competition, as well as head-to-head and random competition dimensions. MaKTO-72b all achieves good results.
-    <!-- Adjust the number of rows and columns (EVERY project differs). -->
-    <table width="100%" style="margin: 20pt 0; text-align: center;" border="1">
-      <tr>
-      	<td></td>
-      	<td><b>Inter-agent Competition</b></td>
-      	<td><b>Human-agent Competition</b></td>
-      </tr>
-      <tr>
-      	<td><b>Head-to-head</b></td>
-      	<!-- <td>Head-to-head Competition</td> -->
-        <td>
-        	<img src="./assets/projects/MaKTO/assets/ai-head.png" width="90%">
-        	<figcaption style="font-size: 14px;">MaKTO-72b has the highest average win rates of the models in the Seer-Witch-Guard setting (61%). </figcaption>
-        </td>
-        <td>
-        	<img src="./assets/projects/MaKTO/assets/human-head.png" width="80%">
-        	<figcaption style="font-size: 14px;">The average win rate of MaKTO-72b in head-to-head competition with humans is 60%.</figcaption>
-        </td>
-      </tr>
-
-      <tr>
-      	<td><b>Random</b></td>
-      	<td>
-      		<img src="./assets/projects/MaKTO/assets/random.png" width="95%">
-      		<figcaption style="font-size: 14px;">MaKTO-72b has the highest TrueSkill score in Seer-Witch-Guard setting.</figcaption>
-        </td>
-      	</td>
-      	<td>
-      		<img src="./assets/projects/MaKTO/assets/human-rand.png" width="90%">
-      		<figcaption style="font-size: 14px;">MaKTO-72b achieves a win rate 61.8% win rate, ranking fourth among all players and surpassing the average human win rate of 54.0%.</figcaption>
-      	</td>
-      </tr>
-    </table>
-
-    <table>
-    	<tr>
-    	<td width="80%">We conducted a <b>Turing-style blind detectability test</b>. MaKTO achieved a detection rate of only 48.9%, lower than random chance, also much lower than GPT-4o (76.6%). This indicates that our model successfully passes this specialized Turing test by convincingly emulating human-like gameplay characteristics and social behaviors.</td>
-    	<td width="20%">
-    		<img src="./assets/projects/MaKTO/assets/turing.png" width="80%" >
-  		</td>
-  	</tr>
-  	</table>
-  	We also did behavior analysis, generalization experiment and ablation studies. Please refer to our paper.
-  </div>
-</div>
-
-<div class="section">
-  <div class="title">Case Study</div>
-  The following is a case of a human-AI head-to-head competition with MaKTO as villagers and human players as werewolves.
-  <div style="height: 800px; 
+  <!-- Case Study Section -->
+  <section class="section" id="case-study">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content">
+            <h2 class="title is-2 has-text-centered">Case Study</h2>
+            <p>
+              The following is a case of a human-AI head-to-head competition with MaKTO as villagers and human players as werewolves.
+            </p>
+          </div>
+          <div style="height: 800px; 
             overflow-y: auto; 
             border: 1px solid #e0e0e0; 
             border-radius: 8px; 
@@ -389,36 +667,65 @@
     </ul><br>
 
     <h3>Game end at Day 3. <i>Villagers (MaKTO team)</i> win! <h3>
-    <!-- 继续添加后面的内容... -->
 </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-</div>
+  <!-- Citation Section -->
+  <section class="section">
+    <div class="container is-max-widescreen">
+      <div class="columns is-centered">
+        <div class="column">
+          <div class="content has-text-justified">
+            <h2 class="title is-3 has-text-centered">Citation</h2>
+            <pre><code>@article{ye2025multi,
+  title={Multi-agent KTO: Reinforcing Strategic Interactions of Large Language Model in Language Game},
+  author={Ye, Rong and Zhang, Yongxin and Zhang, Yikai and Kuang, Haoyu and Wei, Zhongyu and Sun, Peng},
+  journal={arXiv preprint arXiv:2501.14225},
+  year={2025}
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- <div class="section">
-  <div class="title">Videos</div>
-    <div style="position: relative; padding-top: 50%; margin: 20pt 0; text-align: center;">
-      <iframe src="https://slideslive.com/38949368/listen-understand-and-translate-triple-supervision-decouples-endtoend-speechtotext-translation?ref=account-79851-latest" frameborder=0
-              style="position: absolute; top: 2.5%; left: 2.5%; width: 95%; height: 100%;"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-    </div> -->
-<!--  </div>-->
-<!-- </div> -->
-<!-- === Result Section Ends === -->
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content has-text-centered">
+            <p>
+              © 2024 ByteDance Research & Fudan University
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-<!-- === Reference Section Starts === -->
-<!-- <div class="section">
-  <div class="bibtex">BibTeX</div>
-<pre>
-@InProceedings{ye2021end,
-  author    = {Rong Ye and Mingxuan Wang and Lei Li},
-  booktitle = {Proc. of INTERSPEECH},
-  title     = {End-to-end Speech Translation via Cross-modal Progressive Training},
-  year      = {2021},
-  month     = aug,
-}
-</pre>
-</div> -->
-
+  <!-- JavaScript for mobile menu toggle -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get all "navbar-burger" elements
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+      
+      // Add a click event on each of them
+      $navbarBurgers.forEach(el => {
+        el.addEventListener('click', () => {
+          // Get the target from the "data-target" attribute
+          const target = el.dataset.target;
+          const $target = document.getElementById(target);
+          
+          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+          el.classList.toggle('is-active');
+          $target.classList.toggle('is-active');
+        });
+      });
+    });
+  </script>
 </body>
 </html>
