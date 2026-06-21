@@ -5,25 +5,32 @@ AOS.init();
 const hackathonsection = document.querySelector(".selected-section");
 const mentor = [
   {
-    title: "ConST: A New Method for Speech Translation",
-    subtitle: "NAACL 2022 Main Conference Paper",
-    image: "assets/images/about-page/const_logo.png",
-    desp: 'How can we learn unified representations for spoken utterances and their written text? In our newest study, we propose <b>ConST</b>, a cross-modal contrastive learning method for end-to-end speech-to-text translation. ',
-    hyperlink: "https://arxiv.org/abs/2205.02444"
+    title: "Multi-agent KTO: A Werewolf-Playing AI",
+    subtitle: "NeurIPS 2025",
+    image: "assets/images/research-page/werewolf_kto.png",
+    desp: "We trained a language agent that plays the social deduction game 🧛‍♀️ Werewolf as skillfully as humans — reaching a 61% win rate and outperforming GPT-4o and two-stage RL agents.",
+    hyperlink: "MaKTO.html"
   },
   {
-    title: "NVIDA GTC 2022 Talk",
-    subtitle: "Conference Speaker",
-    image: "assets/images/about-page/gtc_talk.png",
-    desp: 'I presented recent works on speech translation at NVIDIA GTC2022 on March 24 (UTC+8). The title is "Speech Translation Systems: From Industrial Applications to Advanced Research".',
-    hyperlink: "https://events.rainfocus.com/widget/nvidia/gtcspring2022/sessioncatalog/session/16395675294020012FZb"
+    title: "Seed LiveInterpret 2.0",
+    subtitle: "Simultaneous Speech-to-Speech Translation · 2025",
+    image: "assets/images/research-page/seed-liveinterpret.png",
+    desp: "An end-to-end simultaneous interpretation system with ~3s latency and real-time voice cloning, reaching quality close to professional human interpreters.",
+    hyperlink: "https://arxiv.org/abs/2507.17527"
   },
   {
-    title: "GigaST: A 10,000-hour Pseudo Speech Translation Corpus",
-    subtitle: "Large-scale dataset",
-    image: "assets/images/research-page/GigaST.png",
-    desp: "Maybe one of the largest English-to-Chinese and English-to-German speech translation dataset.",
-    hyperlink: "https://arxiv.org/abs/2204.03939"
+    title: "Seed-Prover",
+    subtitle: "Automated Theorem Proving · 2025",
+    image: "assets/images/research-page/seed-prover.png",
+    desp: "Solving formal math problems through problem decomposition and iterative reflection.",
+    hyperlink: "https://arxiv.org/abs/2507.15225"
+  },
+  {
+    title: "FinTeam",
+    subtitle: "NLPCC 2025 · Outstanding Paper Award",
+    image: "assets/images/research-page/FinTeam.png",
+    desp: "A multi-agent collaborative system where LLM agents work like an investment-research team across macro, industry, and company analysis.",
+    hyperlink: "https://arxiv.org/abs/2507.10448"
   },
 ];
 
